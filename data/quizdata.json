@@ -1,0 +1,40 @@
+{
+	"mathe": [
+		{"a": "\\(x^2 + x^2\\)", "l": ["\\(2x^2\\)", "\\(x^4\\)", "\\(x^8\\)", "\\(2x^4\\)"]},
+		{"a": "\\(x^2 \\cdot x^2\\)", "l": ["\\(x^4\\)", "\\(x^2\\)", "\\(2x^2\\)", "\\(4x\\)"]},
+		{"a": "\\((x + 3)^2\\)", "l": ["\\(x^2 + 6x + 9\\)", "\\(x^2 + 3\\)", "\\(x^2 + 9\\)", "\\(x^2 + 6x\\)"]},
+		{"a": "\\(\\text{Ableitung von } x^3\\)", "l": ["\\(3x^2\\)", "\\(x^2\\)", "\\(3x\\)", "\\(x^3\\)"]},
+		{"a": "\\(\\int x \\, dx\\)", "l": ["\\(\\frac{1}{2}x^2 + C\\)", "\\(x^2 + C\\)", "\\(\\ln(x) + C\\)", "\\(x + C\\)"]},
+		{"a": "\\(\\text{Was ist } 5 \\cdot (2 + 3)?\\)", "l": ["\\(25\\)", "\\(10\\)", "\\(15\\)", "\\(30\\)"]},
+		{"a": "\\(\\text{Flächeninhalt eines Kreises mit } r = 1\\)", "l": ["\\(\\pi\\)", "\\(2\\pi\\)", "\\(\\pi r^2\\)", "\\(1\\)"]},
+		{"a": "\\(2^4\\)", "l": ["\\(16\\)", "\\(8\\)", "\\(4\\)", "\\(32\\)"]},
+		{"a": "\\(\\sqrt{49}\\)", "l": ["\\(7\\)", "\\(6\\)", "\\(8\\)", "\\(9\\)"]},
+		{"a": "\\(3x + 2 = 11, \\text{ was ist } x?\\)", "l": ["\\(3\\)", "\\(2\\)", "\\(4\\)", "\\(1\\)"]}
+	],
+	"web": [
+		{"a":"Welche Authentifizierung bietet HTTP", "l":["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
+		{"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen", "l":["UDP","TCP","HTTP","Fast Retransmit"]},
+		{"a":"Was ist HTML?", "l":["HyperText Markup Language","Hyper Transfer Markup Language","HighText Machine Language","Hyperlink and Text Markup Language"]},
+		{"a":"Was macht CSS?", "l":["Gestaltung von Webseiten","Strukturieren von Webseiten","Serverkonfiguration","Datenbankabfragen"]},
+		{"a":"Was bedeutet HTTP?", "l":["HyperText Transfer Protocol","Hyper Transfer Text Protocol","High Transfer Text Protocol","HyperText Translation Protocol"]},
+		{"a":"Wofür steht die Abkürzung URL?", "l":["Uniform Resource Locator","Universal Resource Link","Unique Resource Locator","Unified Reference Locator"]},
+		{"a":"Was ist JavaScript?", "l":["Eine Programmiersprache","Ein Bildformat","Ein Texteditor","Ein Server"]},
+		{"a":"Was ist REST?", "l":["Ein Architekturstil für Webdienste","Ein HTTP-Protokoll","Ein Server","Ein Webbrowser"]},
+		{"a":"Welche Datei enthält meist das Grundgerüst einer Webseite?", "l":["index.html","main.css","app.js","favicon.ico"]},
+		{"a":"Was ist ein CDN?", "l":["Content Delivery Network","Computer Data Node","Central Download Network","Code Distribution Node"]}
+	],
+	"noten": [
+		{"a": "c/4", "l": "C4"},
+		{"a": "c#/4", "l": "C#4"},
+		{"a": "d/4", "l": "D4"},
+		{"a": "d#/4", "l": "D#4"},
+		{"a": "e/4", "l": "E4"},
+		{"a": "f/4", "l": "F4"},
+		{"a": "f#/4", "l": "F#4"},
+		{"a": "g/4", "l": "G4"},
+		{"a": "g#/4", "l": "G#4"},
+		{"a": "a/4", "l": "A4"},
+		{"a": "a#/4", "l": "A#4"},
+		{"a": "b/4", "l": "B4"}
+	]
+}

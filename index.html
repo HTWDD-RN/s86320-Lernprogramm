@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <!-- Load local scripts -->
+    <script src="./script/util.js"></script>
+    <script src="./script/render.js"></script>
+    <script src="./script/quiz.js"></script>
+    <script src="./script/index.js"></script>
+
+    <!-- Load math render scripts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+    <!-- Load keyboard and notes scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
+    <script src="./script/qwerty-hancock.min.js"></script>
+    
+    <title>Lernprogramm</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <!-- Header with website title -->
+        <div id="header">
+            <h1 id="title">Lernprogramm</h1>
+            <div>
+                <img src="media/moon.svg" id="themeIcon" onclick="setTheme(true)" alt="Change color theme" height="48" width="48" />
+            </div>
+        </div>
+
+        <div id="main">
+            
+            <!-- Nav bar at the left side -->
+            <nav>
+                <div id="navTitle">
+                    Auswahl
+                </div>
+                <div id="navDashboard" class="navItem" onclick="selectSection('Dashboard')">
+                    <img src="media/dashboard.svg" alt="Dashboard" height="32" width="32" />
+                    <span>Dashboard</span>
+                </div>
+                <div id="navWebtechnik" class="navItem" onclick="selectSection('Webtechnik')">
+                    <img src="media/webtechnik.svg" alt="Webtechnik" height="32" width="32" />
+                    <span>Webtechnik</span>
+                </div>
+                <div id="navMathe" class="navItem" onclick="selectSection('Mathe')">
+                    <img src="media/mathe.svg" alt="Mathe" height="32" width="32" />
+                    <span>Mathe</span>
+                </div>
+                <div id="navMusik" class="navItem" onclick="selectSection('Musik')">
+                    <img src="media/musik.svg" alt="Musik" height="32" width="32" />
+                    <span>Musik</span>
+                </div>
+                <div id="navExtern" class="navItem" onclick="selectSection('Extern')">
+                    <img src="media/extern.svg" alt="Extern" height="32" width="32" />
+                    <span>Extern</span>
+                </div>
+                <div id="navProfil" class="navItem" onclick="loadTemplate('profileContent')">
+                    <img src="media/profile.svg" alt="Profil" height="32" width="32" />
+                    <span>Profil</span>
+                </div>
+            </nav>
+
+            <!-- Main section where all templates are loaded -->
+            <main id="mainContentSection"></main>
+
+            <!-- Information tab at the right side -->
+            <aside>
+                <img src="media/info.svg" alt="Info" alt="Profil" height="175" width="175">
+                <table>
+                    <tr>
+                        <td>Fragen insgesamt:</td>
+                        <td id="overallQuestionsInfo">42 Fragen</td>
+                    </tr>
+                    <tr>
+                        <td>Bis jetzt beantwortet:</td>
+                        <td id="questionsAnsweredInfo">0 Fragen</td>
+                    </tr>
+                    <tr>
+                        <td>Richtig beantwortet:</td>
+                        <td id="questionsAnsweredRightInfo">0 Fragen</td>
+                    </tr>
+                </table>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- TEMPLATES TO LOAD -->
+
+    <!-- Dashboard template -->
+    <template id="dashboardContent" class="hidden">
+        <div id="dashboard">
+            <h2>Dein Lernfortschritt:
+            <span id="lernfortschritt"></span>
+            </h2>
+            <div id="progressbar">
+                <div id="progress"></div>
+            </div>
+
+            <div id="cards">
+                <div id="cardWebtechnik" class="dashboardCard" onclick="selectSection('Webtechnik')"> <h3>Webtechnik</h3> </div>
+                <div id="cardMathe" class="dashboardCard" onclick="selectSection('Mathe')"> <h3>Mathe</h3> </div>
+                <div id="cardNoten" class="dashboardCard" onclick="selectSection('Musik')"> <h3>Noten</h3> </div>
+                <div id="cardExtern" class="dashboardCard" onclick="selectSection('Extern')"> <h3>Externer Aufgaben Server</h3> </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Raw Quiz template -->
+    <template id="quizContent" class="hidden">
+        <div id="quiz">
+            <h2 id="questionModule">Modul</h2>
+            <span id="questionProgress">Frage 1/10</span>
+            <div id="questionProgressBar"><div id="questionProgressBarProgress"></div></div>
+            <div id="question">
+                <span id="questionSpan">Frage:</span>
+            </div>
+            <div id="cards">
+                <div id="card1" class="card" onclick="chooseAnswer(this)">Antwort 1 </div>
+                <div id="card2" class="card" onclick="chooseAnswer(this)">Antwort 2 </div>
+                <div id="card3" class="card" onclick="chooseAnswer(this)">Antwort 3 </div>
+                <div id="card4" class="card" onclick="chooseAnswer(this)">Antwort 4 </div>
+            </div>
+            <div id="nextQuestion" onclick="nextQuestion()" class="hidden">
+                <span>Weiter</span>
+            </div>
+        </div>
+    </template>
+
+    <!-- Storage type selection template (not used) -->
+    <!-- This template was meant to load ever time a section is selected,
+         so the user could decide to solve questions on the external server or locally -->
+    <template id="quizSelectionContent" class="hidden">
+        <div id="quizSelection">
+            <h2>Aufgabenspeicher Auswählen:</h2>
+            <div id="selection">
+                <div id="local" onclick="chooseStorageType('local')">
+                    <h2>
+                        <img src="media/card.svg" alt="Local Storage" height="32" width="32" />
+                        Lokal
+                    </h2>
+                    <div>Löse auf deinem Gerät gespeicherte Aufgaben.</div>
+                </div>
+                <div id="extern" onclick="chooseStorageType('external')">
+                    <h2>
+                        <img src="media/extern.svg" alt="External Storage" height="32" width="32" />
+                        Extern
+                    </h2>
+                    <div>Löse neue Aufgaben vom Aufgaben Server.</div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Quiz result template -->
+    <template id="quizResultContent" class="hidden">
+        <div id="quizResult">
+            <h2>Aufgaben Ergebniss:</h2>
+            <div>
+                <div id="resultContent">
+                    <span id="questionsAnswered">Fragen beantwortet: 10/10</span>
+                    <span id="questionsAnsweredRight">Richtig beantwortet: 0/10</span>
+                    <span id="questionsAnsweredWrong">Falsch beantwortet: 0/10</span>
+                </div>
+                <div id="resultButtons">
+                    <div class="controls" onclick="again()">Noch mal Versuchen</div>
+                    <div class="controls" onclick="selectSection('Dashboard')">Zurück zum Dashboard</div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Profile section template -->
+    <template id="profileContent" class="hidden">
+        <div id="profile">
+            <h2>Profil</h2>
+            <div id="inputArea">
+                <input id="username" type="text" placeholder="Benutzername" value="">
+                <input id="password" type="password" placeholder="Passwort">
+            </div>
+            <div id="loginButton" onclick="login()">Anmelden</div>
+            <div id="errorMessage"></div>
+        </div>
+    </template>
+</body>
+</html>
