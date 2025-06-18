@@ -215,10 +215,10 @@ function chooseStorageType(type) {
 /**
 * Resets the questionConfig object for a new quiz session.
 */
-function resetQuestionConfig() {
+function resetQuestionConfig(questions) {
 	questionConfig = {
 		type: state,
-		questions: [],
+		questions: questions || [],
 		index: 0,
 		right: 0,
 		wrong: 0
